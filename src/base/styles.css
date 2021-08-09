@@ -1,0 +1,3 @@
+.btn {
+  @apply inline-block border-2 border-primary-dark rounded p-1 text-primary-dark cursor-pointer hover:bg-secondary-light active:bg-secondary;
+}

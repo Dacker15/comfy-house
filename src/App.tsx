@@ -1,5 +1,5 @@
 import React, { VFC } from 'react'
-import Appbar from 'src/appbar/Appbar'
+import Appbar from 'src/components/appbar/Appbar'
 
 const App: VFC = () => {
   return (

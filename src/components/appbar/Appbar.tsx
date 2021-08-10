@@ -2,7 +2,7 @@ import React, { VFC } from 'react'
 import logo from 'src/assets/logo.svg'
 import Button from 'src/base/Button'
 import { PHONE_NUM } from 'src/lib/constant'
-import 'src/appbar/styles.scss'
+import './styles.scss'
 
 const Appbar: VFC = () => {
   return (

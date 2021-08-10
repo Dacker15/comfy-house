@@ -1,11 +1,13 @@
-import React, { ButtonHTMLAttributes, FC } from 'react'
-import './styles.css'
+import React, { ButtonHTMLAttributes, FC, useMemo } from 'react'
+import 'src/base/styles.scss'
+import { getClassName } from 'src/lib/utils'
 
 const Button: FC<ButtonHTMLAttributes<any>> = (props) => {
+  const className = useMemo(() => getClassName('btn', props.className), [props.className])
   return (
-    <div className="btn" {...props}>
+    <button {...props} className={className}>
       {props.children}
-    </div>
+    </button>
   )
 }
 

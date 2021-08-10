@@ -1,0 +1,15 @@
+.appbar {
+  @apply flex items-center gap-x-4 p-2;
+  &-logo {
+    @apply w-max h-full max-w-xs max-h-16;
+  }
+  &-spacer {
+    @apply flex-1;
+  }
+  &-phone {
+    @apply flex items-center gap-x-4;
+  }
+  &-shop {
+    @apply flex items-center gap-x-2;
+  }
+}

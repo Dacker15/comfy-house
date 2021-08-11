@@ -1,11 +1,27 @@
-import React, { VFC } from 'react'
+import React, { useCallback, useEffect, useState, VFC } from 'react'
+import { Product, ProductRaw } from 'src/lib/types'
+import { mapProducts } from 'src/lib/utils'
 import Appbar from 'src/components/appbar/Appbar'
+import Gallery from 'src/components/gallery/Gallery'
 
 const App: VFC = () => {
+  const [products, setProducts] = useState<Product[]>([])
+
+  const onAdd = useCallback((nextProduct: Product) => {
+    console.log('We will add this product to your cart', nextProduct)
+  }, [])
+
+  useEffect(() => {
+    fetch('products.json').then((response) => {
+      response.json().then((data: { items: ProductRaw[] }) => setProducts(mapProducts(data.items)))
+    })
+  }, [])
+
   return (
     <div>
       <Appbar />
       Hello World!
+      <Gallery products={products} onAdd={onAdd} />
     </div>
   )
 }

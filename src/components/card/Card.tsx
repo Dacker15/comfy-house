@@ -8,7 +8,11 @@ const Card: VFC<Props> = (props) => {
   return (
     <div className="card">
       <div className="card-cover">
-        <img src={`${process.env.PUBLIC_URL}/assets/${props.model.url}`} alt={props.model.title} />
+        <img
+          className="card-cover-image"
+          src={`${process.env.PUBLIC_URL}/assets/${props.model.url}`}
+          alt={props.model.title}
+        />
         <Button className="card-cover-shop-button" onClick={() => props.onAdd(props.model)}>
           <i className="fa fa-shopping-cart" />
         </Button>

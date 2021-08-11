@@ -1,11 +1,17 @@
 .card {
   &-cover {
-    @apply relative border-t-2 border-l-2 border-r-2 rounded-tl-lg rounded-tr-lg;
+    @apply relative overflow-hidden border-t-2 border-l-2 border-r-2 rounded-tl-lg rounded-tr-lg;
+    &-image {
+      @apply cursor-pointer transition-transform duration-300 scale-125;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
     &-shop-button {
-      @apply absolute bottom-0 right-0 border-r-0
-      border-b-0 rounded-tl-xl rounded-tr-none rounded-br-none
-      rounded-bl-none p-3 bg-primary border-primary text-white
-      hover:bg-primary hover:text-black active:bg-primary-dark;
+      @apply absolute bottom-0 right-0 border-none
+      rounded-tl-xl rounded-tr-none rounded-br-none
+      rounded-bl-none p-3 bg-primary border-primary text-black
+      hover:bg-primary hover:text-white active:bg-primary-dark;
     }
   }
   &-description {

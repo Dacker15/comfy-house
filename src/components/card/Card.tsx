@@ -13,7 +13,12 @@ const Card: VFC<Props> = (props) => {
           src={`${process.env.PUBLIC_URL}/assets/${props.model.url}`}
           alt={props.model.title}
         />
-        <Button className="card-cover-shop-button" onClick={() => props.onAdd(props.model)}>
+        <Button
+          className="card-cover-shop-button"
+          variant="contained"
+          color="secondary"
+          onClick={() => props.onAdd(props.model)}
+        >
           <i className="fa fa-shopping-cart" />
         </Button>
       </div>

@@ -13,3 +13,6 @@ export type Product = {
   price: number
   url: string
 }
+
+export type ThemeColor = 'primary' | 'secondary'
+export type ButtonVariant = 'contained' | 'outlined'

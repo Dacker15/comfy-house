@@ -1,3 +1,15 @@
 .btn {
-  @apply border-2 border-primary-dark rounded p-1 text-primary-dark cursor-pointer hover:bg-secondary-light active:bg-secondary;
+  @apply p-1 rounded cursor-pointer;
+  &--primary {
+    @apply border-primary-light bg-primary-light text-primary-light hover:border-primary-dark hover:text-primary-dark active:bg-primary-lighter;
+  }
+  &--secondary {
+    @apply border-secondary-light bg-secondary-light text-secondary-light hover:border-secondary-dark hover:text-secondary-dark active:bg-secondary-lighter;
+  }
+  &--contained {
+    @apply p-2 text-white hover:text-black;
+  }
+  &--outlined {
+    @apply border-2 background-none;
+  }
 }

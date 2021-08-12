@@ -12,7 +12,7 @@ const Appbar: VFC = () => {
         <i className="fa fa-phone" />
         {PHONE_NUM}
       </span>
-      <Button className="appbar-shop">
+      <Button className="appbar-shop" variant="outlined" color="primary">
         <i className="fa fa-shopping-cart" />
         Shop
       </Button>

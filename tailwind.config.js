@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
@@ -23,8 +24,18 @@ module.exports = {
   },
   variants: {
     extend: {
-      backgroundColor: ['active', 'focus']
+      backgroundColor: ['active', 'focus'],
+      borderWidth: ['hover']
     }
   },
-  plugins: []
+  plugins: [
+    plugin(({ addUtilities }) => {
+      const newUtilities = {
+        '.background-none': {
+          background: 'none'
+        }
+      }
+      addUtilities(newUtilities)
+    })
+  ]
 }

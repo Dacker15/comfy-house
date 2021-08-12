@@ -8,14 +8,16 @@ module.exports = {
     colors: {
       ...colors,
       primary: {
-        light: '#D3A15F',
-        DEFAULT: '#C08435',
-        dark: '#A06E2C'
+        lighter: 'hsl(29, 84%, 70%)',
+        light: 'hsl(29, 84%, 55%)',
+        DEFAULT: 'hsl(29, 84%, 40%)',
+        dark: 'hsl(29, 84%, 25%)'
       },
       secondary: {
-        light: '#F1ECE4',
-        DEFAULT: '#D9CAB3',
-        dark: '#C1A985'
+        lighter: 'hsl(148, 12%, 60%)',
+        light: 'hsl(148, 12%, 45%)',
+        DEFAULT: 'hsl(148, 12%, 30%)',
+        dark: 'hsl(148, 12%, 15%)'
       }
     }
   },

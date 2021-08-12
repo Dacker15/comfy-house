@@ -5,7 +5,21 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        'up-down': {
+          '0%, 100%': {
+            transform: 'translate(1.5rem, 1.5rem)'
+          },
+          '50%': {
+            transform: 'translate(0rem, 0rem)'
+          }
+        }
+      },
+      animation: {
+        'up-down': 'up-down 3s ease-in-out'
+      }
+    },
     colors: {
       ...colors,
       primary: {

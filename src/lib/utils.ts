@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Product, ProductRaw } from 'src/lib/types'
 
 export const getClassName = (base: string, extra?: string) => {
@@ -29,4 +29,33 @@ export const useDebounce = <T>(value: T, delay: number): T => {
   }, [value, delay])
 
   return debouncedValue
+}
+
+export const useAnimation = (element: HTMLElement | null, animationClass: string, once = true) => {
+  const [done, setDone] = useState<boolean>(false)
+  const canRepeat = useMemo(() => !once || !done, [once, done])
+  const observer = useMemo(
+    () =>
+      new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const target = entry.target
+          if (entry.isIntersecting) {
+            if (canRepeat) {
+              target.classList.add(animationClass)
+              setDone(true)
+            }
+          } else {
+            target.classList.remove(animationClass)
+          }
+        })
+      }),
+    [animationClass, canRepeat]
+  )
+
+  useEffect(() => {
+    if (element) observer.observe(element)
+    return () => {
+      if (element) observer.unobserve(element)
+    }
+  }, [element, observer])
 }

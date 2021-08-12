@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState, VFC } from 'react'
 import { Product, ProductRaw } from 'src/lib/types'
 import { mapProducts } from 'src/lib/utils'
+import About from 'src/components/about/About'
 import Appbar from 'src/components/appbar/Appbar'
 import Gallery from 'src/components/gallery/Gallery'
 
@@ -20,7 +21,7 @@ const App: VFC = () => {
   return (
     <div>
       <Appbar />
-      Hello World!
+      <About />
       <Gallery products={products} onAdd={onAdd} />
     </div>
   )

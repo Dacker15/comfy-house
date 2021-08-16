@@ -8,10 +8,10 @@ const Appbar: VFC = () => {
     <div className="appbar">
       <img className="appbar-logo" src={`${process.env.PUBLIC_URL}/assets/logo.svg`} alt="Store's logo" />
       <div className="appbar-spacer" />
-      <span className="appbar-phone">
+      <a href={`tel:${PHONE_NUM}`} className="appbar-phone">
         <i className="fa fa-phone" />
-        {PHONE_NUM}
-      </span>
+        <span className="appbar-phone-text">{PHONE_NUM}</span>
+      </a>
       <Button className="appbar-shop" variant="outlined" color="primary">
         <i className="fa fa-shopping-cart" />
         Shop

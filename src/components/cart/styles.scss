@@ -1,0 +1,28 @@
+.cart {
+  @apply flex flex-col gap-y-4
+  absolute top-10 right-0 z-10
+  w-full md:w-2/5 lg:w-1/5
+  h-112 md:h-96 p-4
+  border-2 border-primary bg-white;
+  &-container {
+    @apply overflow-y-scroll;
+  }
+  &-total {
+    @apply flex justify-around text-xl;
+  }
+  &-actions {
+    @apply flex gap-x-1;
+    & * {
+      @apply flex-1;
+    }
+  }
+  &-element {
+    @apply flex items-center gap-x-4 p-2;
+    &-image {
+      @apply rounded-full w-16 h-16;
+    }
+    &-title {
+      @apply flex-1 text-center capitalize;
+    }
+  }
+}

@@ -1,9 +1,9 @@
-import React, { VFC } from 'react'
+import React, { FC } from 'react'
 import Button from 'src/base/Button'
 import { PHONE_NUM } from 'src/lib/constant'
 import './styles.scss'
 
-const Appbar: VFC = () => {
+const Appbar: FC = (props) => {
   return (
     <div className="appbar">
       <img className="appbar-logo" src={`${process.env.PUBLIC_URL}/assets/logo.svg`} alt="Store's logo" />
@@ -16,6 +16,7 @@ const Appbar: VFC = () => {
         <i className="fa fa-shopping-cart" />
         Shop
       </Button>
+      {props.children}
     </div>
   )
 }

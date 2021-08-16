@@ -4,6 +4,7 @@ import { Product, ProductRaw } from 'src/lib/types'
 import { mapProducts } from 'src/lib/utils'
 import About from 'src/components/about/About'
 import Appbar from 'src/components/appbar/Appbar'
+import Cart from './components/cart/Cart'
 import Gallery from 'src/components/gallery/Gallery'
 import Splash from 'src/components/splash/Splash'
 
@@ -29,7 +30,9 @@ const App: VFC = () => {
 
   return (
     <div>
-      <Appbar />
+      <Appbar>
+        <Cart products={products} />
+      </Appbar>
       <Splash onScroll={scrollToAbout} />
       <About onScroll={scrollToGallery} />
       <Gallery products={products} onAdd={onAdd} />

@@ -1,5 +1,6 @@
 const colors = require('tailwindcss/colors')
 const plugin = require('tailwindcss/plugin')
+const SCROLL_MARGIN_VALUES = [1, 2]
 
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
@@ -52,7 +53,7 @@ module.exports = {
     }
   },
   plugins: [
-    plugin(({ addUtilities, theme }) => {
+    plugin(({ addUtilities }) => {
       const backgroundUtilities = {
         '.background-none': {
           background: 'none'
@@ -63,7 +64,16 @@ module.exports = {
           'text-shadow': '0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white'
         }
       }
+      const scrollMarginUtilities = SCROLL_MARGIN_VALUES.reduce((acc, current) => {
+        acc[`.scroll-mt-${current * 4}`] = {
+          'scroll-margin-top': `${current}rem`
+        }
+        return acc
+      }, {})
       addUtilities({ ...backgroundUtilities, ...textShadowUtilities })
+      addUtilities(scrollMarginUtilities, {
+        variants: ['responsive']
+      })
     })
   ]
 }

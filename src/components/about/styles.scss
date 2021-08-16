@@ -1,5 +1,5 @@
 .about {
-  @apply flex flex-col lg:flex-row;
+  @apply flex flex-col lg:flex-row scroll-mt-4 lg:scroll-mt-8;
   &-description {
     @apply flex-1 flex flex-col items-center justify-center text-center p-8;
     &-title {

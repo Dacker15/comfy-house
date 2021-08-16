@@ -2,7 +2,8 @@ import React, { VFC } from 'react'
 import Button from 'src/base/Button'
 import './styles.scss'
 
-const Splash: VFC = () => {
+type Props = { onScroll: () => void }
+const Splash: VFC<Props> = (props) => {
   return (
     <div className="splash">
       <div
@@ -11,7 +12,9 @@ const Splash: VFC = () => {
       >
         <div className="splash-image-explore">
           <p className="splash-image-explore-title">Welcome to Comfy House</p>
-          <Button className="splash-image-explore-button">Explore</Button>
+          <Button className="splash-image-explore-button" onClick={props.onScroll}>
+            Explore
+          </Button>
         </div>
       </div>
     </div>

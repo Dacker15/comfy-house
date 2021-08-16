@@ -1,5 +1,5 @@
 import React, { useEffect, useState, VFC } from 'react'
-import { DEBOUNCE_TIME } from 'src/lib/constant'
+import { DEBOUNCE_TIME, GALLERY_ID } from 'src/lib/constant'
 import { Product } from 'src/lib/types'
 import { useDebounce } from 'src/lib/utils'
 import Card from 'src/components/card/Card'
@@ -17,7 +17,7 @@ const Gallery: VFC<Props> = (props) => {
   }, [props.products, debouncedText])
 
   return (
-    <div className="gallery">
+    <div id={GALLERY_ID} className="gallery">
       <p className="gallery-title">Our Products</p>
       <input
         type="text"

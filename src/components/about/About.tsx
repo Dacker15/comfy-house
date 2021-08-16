@@ -1,13 +1,16 @@
 import React, { useRef, VFC } from 'react'
+import Button from 'src/base/Button'
+import { ABOUT_ID } from 'src/lib/constant'
 import { useAnimation } from 'src/lib/utils'
 import './styles.scss'
 
-const About: VFC = () => {
+type Props = { onScroll: () => void }
+const About: VFC<Props> = (props) => {
   const imageRef = useRef<HTMLImageElement | null>(null)
   useAnimation(imageRef.current, 'about-screen-image--animated')
 
   return (
-    <div className="about">
+    <div id={ABOUT_ID} className="about">
       <div className="about-description">
         <p className="about-description-title">Hello</p>
         <p className="about-description-paragraph">
@@ -17,6 +20,9 @@ const About: VFC = () => {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
           est laborum."
         </p>
+        <Button onClick={props.onScroll} className="about-description-button" variant="outlined" color="secondary">
+          Explore
+        </Button>
       </div>
       <div className="about-screen">
         <div className="about-screen-container">

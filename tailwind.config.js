@@ -18,6 +18,15 @@ module.exports = {
       },
       animation: {
         'up-down': 'up-down 3s ease-in-out'
+      },
+      height: {
+        112: '32rem',
+        120: '34rem',
+        128: '36rem',
+        134: '38rem'
+      },
+      backgroundSize: {
+        full: '100% 100%'
       }
     },
     colors: {
@@ -43,13 +52,18 @@ module.exports = {
     }
   },
   plugins: [
-    plugin(({ addUtilities }) => {
-      const newUtilities = {
+    plugin(({ addUtilities, theme }) => {
+      const backgroundUtilities = {
         '.background-none': {
           background: 'none'
         }
       }
-      addUtilities(newUtilities)
+      const textShadowUtilities = {
+        '.border-text-white': {
+          'text-shadow': '0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white'
+        }
+      }
+      addUtilities({ ...backgroundUtilities, ...textShadowUtilities })
     })
   ]
 }

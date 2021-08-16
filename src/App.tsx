@@ -4,6 +4,7 @@ import { mapProducts } from 'src/lib/utils'
 import About from 'src/components/about/About'
 import Appbar from 'src/components/appbar/Appbar'
 import Gallery from 'src/components/gallery/Gallery'
+import Splash from 'src/components/splash/Splash'
 
 const App: VFC = () => {
   const [products, setProducts] = useState<Product[]>([])
@@ -21,6 +22,7 @@ const App: VFC = () => {
   return (
     <div>
       <Appbar />
+      <Splash />
       <About />
       <Gallery products={products} onAdd={onAdd} />
     </div>

@@ -1,0 +1,19 @@
+.splash {
+  @apply flex items-center justify-center md:px-3 lg:px-6 bg-primary;
+  &-image {
+    @apply flex items-center justify-center
+    w-full md:w-9/12 lg:w-8/12
+    h-96 md:h-112 lg:h-120
+    bg-full bg-center bg-no-repeat
+    border-2 border-secondary;
+    &-explore {
+      @apply flex flex-col gap-y-8 text-center items-center;
+      &-title {
+        @apply text-5xl text-secondary border-text-white;
+      }
+      &-button {
+        @apply w-1/4;
+      }
+    }
+  }
+}

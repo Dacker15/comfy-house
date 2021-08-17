@@ -1,18 +1,30 @@
-import React, { useMemo, VFC } from 'react'
+import React, { useEffect, useMemo, useRef, VFC } from 'react'
 import { CartProduct } from 'src/lib/types'
 import Button from 'src/base/Button'
 import CartElement from './CartElement'
 import './styles.scss'
 
-type Props = { products: CartProduct[]; onRemove: (index: number) => void; onClear: () => void; onCheckout: () => void }
+type Props = {
+  products: CartProduct[]
+  isOpen: boolean
+  onRemove: (index: number) => void
+  onClear: () => void
+  onCheckout: () => void
+}
 const Cart: VFC<Props> = (props) => {
+  const containerRef = useRef<HTMLDivElement>(null)
   const price = useMemo(
     () => props.products.reduce<number>((acc, current) => acc + current.price * current.count, 0).toFixed(2),
     [props.products]
   )
 
+  useEffect(() => {
+    if (props.isOpen) containerRef.current?.classList.add('cart--open')
+    else containerRef.current?.classList.remove('cart--open')
+  }, [props.isOpen])
+
   return (
-    <div className="cart">
+    <div className="cart" ref={containerRef}>
       <div className="cart-container">
         {props.products.length ? (
           props.products.map((p, i) => <CartElement key={i} model={p} onRemove={() => props.onRemove(i)} />)

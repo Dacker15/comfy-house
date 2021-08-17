@@ -11,6 +11,7 @@ import Splash from 'src/components/splash/Splash'
 const App: VFC = () => {
   const [products, setProducts] = useState<Product[]>([])
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([])
+  const [isCartOpen, setCartOpen] = useState<boolean>(false)
 
   const onAdd = useCallback((nextProduct: Product) => {
     setCartProducts((prev) => {
@@ -39,6 +40,10 @@ const App: VFC = () => {
     alert('You will redirect to checkout page')
   }, [])
 
+  const onToggle = useCallback(() => {
+    setCartOpen((prev) => !prev)
+  }, [])
+
   const onScroll = useCallback((elementId: string) => {
     const element = document.getElementById(elementId)
     if (element) element.scrollIntoView({ behavior: 'smooth' })
@@ -54,8 +59,14 @@ const App: VFC = () => {
 
   return (
     <div>
-      <Appbar>
-        <Cart products={cartProducts} onRemove={onRemove} onClear={onClear} onCheckout={onCheckout} />
+      <Appbar onToggle={onToggle}>
+        <Cart
+          products={cartProducts}
+          isOpen={isCartOpen}
+          onRemove={onRemove}
+          onClear={onClear}
+          onCheckout={onCheckout}
+        />
       </Appbar>
       <Splash onScroll={scrollToAbout} />
       <About onScroll={scrollToGallery} />

@@ -3,7 +3,8 @@ import Button from 'src/base/Button'
 import { PHONE_NUM } from 'src/lib/constant'
 import './styles.scss'
 
-const Appbar: FC = (props) => {
+type Props = { onToggle: () => void }
+const Appbar: FC<Props> = (props) => {
   return (
     <div className="appbar">
       <img className="appbar-logo" src={`${process.env.PUBLIC_URL}/assets/logo.svg`} alt="Store's logo" />
@@ -12,7 +13,7 @@ const Appbar: FC = (props) => {
         <i className="fa fa-phone" />
         <span className="appbar-phone-text">{PHONE_NUM}</span>
       </a>
-      <Button className="appbar-shop" variant="outlined" color="primary">
+      <Button className="appbar-shop" variant="outlined" color="primary" onClick={props.onToggle}>
         <i className="fa fa-shopping-cart" />
         Shop
       </Button>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, VFC } from 'react'
+import React, { useCallback, useEffect, useMemo, useState, VFC } from 'react'
 import { ABOUT_ID, GALLERY_ID } from 'src/lib/constant'
 import { CartProduct, Product, ProductRaw } from 'src/lib/types'
 import { mapProducts } from 'src/lib/utils'
@@ -12,6 +12,14 @@ const App: VFC = () => {
   const [products, setProducts] = useState<Product[]>([])
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([])
   const [isCartOpen, setCartOpen] = useState<boolean>(false)
+  const totalItems = useMemo(
+    () => cartProducts.reduce<number>((acc, current) => acc + current.count, 0),
+    [cartProducts]
+  )
+  const price = useMemo(
+    () => cartProducts.reduce<number>((acc, current) => acc + current.price * current.count, 0).toFixed(2),
+    [cartProducts]
+  )
 
   const onAdd = useCallback((nextProduct: Product) => {
     setCartProducts((prev) => {
@@ -59,9 +67,10 @@ const App: VFC = () => {
 
   return (
     <div>
-      <Appbar onToggle={onToggle}>
+      <Appbar cartPrice={price} cartItems={totalItems} onToggle={onToggle}>
         <Cart
           products={cartProducts}
+          price={price}
           isOpen={isCartOpen}
           onRemove={onRemove}
           onClear={onClear}

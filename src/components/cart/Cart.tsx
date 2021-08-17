@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, VFC } from 'react'
+import React, { useEffect, useRef, VFC } from 'react'
 import { CartProduct } from 'src/lib/types'
 import Button from 'src/base/Button'
 import CartElement from './CartElement'
@@ -6,6 +6,7 @@ import './styles.scss'
 
 type Props = {
   products: CartProduct[]
+  price: string
   isOpen: boolean
   onRemove: (index: number) => void
   onClear: () => void
@@ -13,10 +14,6 @@ type Props = {
 }
 const Cart: VFC<Props> = (props) => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const price = useMemo(
-    () => props.products.reduce<number>((acc, current) => acc + current.price * current.count, 0).toFixed(2),
-    [props.products]
-  )
 
   useEffect(() => {
     if (props.isOpen) containerRef.current?.classList.add('cart--open')
@@ -34,7 +31,7 @@ const Cart: VFC<Props> = (props) => {
       </div>
       <p className="cart-total">
         <span>Total:</span>
-        <span>${price}</span>
+        <span>${props.price}</span>
       </p>
       <div className="cart-actions">
         <Button color="primary" variant="outlined" onClick={props.onClear}>

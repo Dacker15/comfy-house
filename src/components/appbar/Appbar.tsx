@@ -3,7 +3,7 @@ import Button from 'src/base/Button'
 import { PHONE_NUM } from 'src/lib/constant'
 import './styles.scss'
 
-type Props = { onToggle: () => void }
+type Props = { cartPrice: string; cartItems: number; onToggle: () => void }
 const Appbar: FC<Props> = (props) => {
   return (
     <div className="appbar">
@@ -15,7 +15,7 @@ const Appbar: FC<Props> = (props) => {
       </a>
       <Button className="appbar-shop" variant="outlined" color="primary" onClick={props.onToggle}>
         <i className="fa fa-shopping-cart" />
-        Shop
+        {props.cartItems} {`item${props.cartItems !== 1 ? 's' : ''}`} - ${props.cartPrice}
       </Button>
       {props.children}
     </div>

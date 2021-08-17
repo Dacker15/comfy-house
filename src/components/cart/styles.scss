@@ -1,11 +1,13 @@
 .cart {
   @apply flex flex-col gap-y-4
   absolute top-10 right-0 z-10
-  w-full md:w-2/5 lg:w-1/5
-  h-112 md:h-96 p-4
+  w-full md:w-2/5 lg:w-1/5 max-h-96 p-4
   border-2 border-primary bg-white;
   &-container {
-    @apply overflow-y-scroll;
+    @apply overflow-y-auto;
+  }
+  &-empty {
+    @apply text-xl text-center;
   }
   &-total {
     @apply flex justify-around text-xl;

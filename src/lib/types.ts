@@ -14,5 +14,7 @@ export type Product = {
   url: string
 }
 
+export type CartProduct = { count: number } & Product
+
 export type ThemeColor = 'primary' | 'secondary'
 export type ButtonVariant = 'contained' | 'outlined'

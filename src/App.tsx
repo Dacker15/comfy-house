@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState, VFC } from 'react'
 import { ABOUT_ID, GALLERY_ID } from 'src/lib/constant'
-import { Product, ProductRaw } from 'src/lib/types'
+import { CartProduct, Product, ProductRaw } from 'src/lib/types'
 import { mapProducts } from 'src/lib/utils'
 import About from 'src/components/about/About'
 import Appbar from 'src/components/appbar/Appbar'
@@ -10,9 +10,33 @@ import Splash from 'src/components/splash/Splash'
 
 const App: VFC = () => {
   const [products, setProducts] = useState<Product[]>([])
+  const [cartProducts, setCartProducts] = useState<CartProduct[]>([])
 
   const onAdd = useCallback((nextProduct: Product) => {
-    console.log('We will add this product to your cart', nextProduct)
+    setCartProducts((prev) => {
+      const next = [...prev]
+      const index = next.findIndex((p) => p.id === nextProduct.id)
+      if (index !== -1) next[index] = { ...next[index], count: next[index].count++ }
+      else next.push({ ...nextProduct, count: 1 })
+      return next
+    })
+  }, [])
+
+  const onRemove = useCallback((index: number) => {
+    setCartProducts((prev) => {
+      const next = [...prev]
+      if (next[index].count >= 1) next[index] = { ...next[index], count: next[index].count-- }
+      else next.splice(index, 1)
+      return next
+    })
+  }, [])
+
+  const onClear = useCallback(() => {
+    setCartProducts([])
+  }, [])
+
+  const onCheckout = useCallback(() => {
+    alert('You will redirect to checkout page')
   }, [])
 
   const onScroll = useCallback((elementId: string) => {
@@ -31,7 +55,7 @@ const App: VFC = () => {
   return (
     <div>
       <Appbar>
-        <Cart products={products} />
+        <Cart products={cartProducts} onRemove={onRemove} onClear={onClear} onCheckout={onCheckout} />
       </Appbar>
       <Splash onScroll={scrollToAbout} />
       <About onScroll={scrollToGallery} />

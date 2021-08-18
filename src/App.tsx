@@ -25,7 +25,7 @@ const App: VFC = () => {
     setCartProducts((prev) => {
       const next = [...prev]
       const index = next.findIndex((p) => p.id === nextProduct.id)
-      if (index !== -1) next[index] = { ...next[index], count: next[index].count++ }
+      if (index !== -1) next[index] = { ...next[index], count: next[index].count + 1 }
       else next.push({ ...nextProduct, count: 1 })
       return next
     })
@@ -34,7 +34,7 @@ const App: VFC = () => {
   const onRemove = useCallback((index: number) => {
     setCartProducts((prev) => {
       const next = [...prev]
-      if (next[index].count >= 1) next[index] = { ...next[index], count: next[index].count-- }
+      if (next[index].count >= 1) next[index] = { ...next[index], count: next[index].count - 1 }
       else next.splice(index, 1)
       return next
     })

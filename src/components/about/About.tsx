@@ -1,7 +1,7 @@
 import React, { useRef, VFC } from 'react'
 import Button from 'src/base/Button'
-import { ABOUT_ID } from 'src/lib/constant'
-import { useAnimation } from 'src/lib/utils'
+import { ABOUT_ID, INTRO_IMAGE_URL } from 'src/lib/constant'
+import { fromPublicFolder, useAnimation } from 'src/lib/utils'
 import './styles.scss'
 
 type Props = { onScroll: () => void }
@@ -26,12 +26,7 @@ const About: VFC<Props> = (props) => {
       </div>
       <div className="about-screen">
         <div className="about-screen-container">
-          <img
-            ref={imageRef}
-            className="about-screen-image"
-            src={`${process.env.PUBLIC_URL}/assets/hero-bcg.jpeg`}
-            alt="About us"
-          />
+          <img ref={imageRef} className="about-screen-image" src={fromPublicFolder(INTRO_IMAGE_URL)} alt="About us" />
         </div>
       </div>
     </div>

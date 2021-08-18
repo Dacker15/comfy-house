@@ -1,13 +1,14 @@
 import React, { FC } from 'react'
 import Button from 'src/base/Button'
-import { PHONE_NUM } from 'src/lib/constant'
+import { LOGO_URL, PHONE_NUM } from 'src/lib/constant'
+import { fromPublicFolder } from 'src/lib/utils'
 import './styles.scss'
 
 type Props = { cartPrice: string; cartItems: number; onToggle: () => void }
 const Appbar: FC<Props> = (props) => {
   return (
     <div className="appbar">
-      <img className="appbar-logo" src={`${process.env.PUBLIC_URL}/assets/logo.svg`} alt="Store's logo" />
+      <img className="appbar-logo" src={fromPublicFolder(LOGO_URL)} alt="Store's logo" />
       <div className="appbar-spacer" />
       <a href={`tel:${PHONE_NUM}`} className="appbar-phone">
         <i className="fa fa-phone" />

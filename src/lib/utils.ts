@@ -26,6 +26,14 @@ export const findElementByClassName = (element: HTMLElement | null, classNames: 
   return false
 }
 
+export const fromPublicFolder = (url: string, fromAsset: boolean = true) => {
+  const formattedUrl = url.startsWith('/') ? url : '/' + url
+  let finalPath = process.env.PUBLIC_URL
+  if (fromAsset) finalPath += '/assets'
+  finalPath += formattedUrl
+  return finalPath
+}
+
 export const useDebounce = <T>(value: T, delay: number): T => {
   const [debouncedValue, setDebouncedValue] = useState<T>(value)
 

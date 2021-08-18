@@ -1,5 +1,6 @@
 import React, { VFC } from 'react'
 import Button from 'src/base/Button'
+import { fromPublicFolder } from 'src/lib/utils'
 import { Product } from 'src/lib/types'
 import './styles.scss'
 
@@ -8,11 +9,7 @@ const Card: VFC<Props> = (props) => {
   return (
     <div className="card">
       <div className="card-cover">
-        <img
-          className="card-cover-image"
-          src={`${process.env.PUBLIC_URL}/assets/${props.model.url}`}
-          alt={props.model.title}
-        />
+        <img className="card-cover-image" src={fromPublicFolder(props.model.url)} alt={props.model.title} />
         <Button
           className="card-cover-shop-button"
           variant="contained"

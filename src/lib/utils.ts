@@ -15,6 +15,17 @@ export const mapProducts = (data: ProductRaw[]): Product[] => {
   }))
 }
 
+export const findElementByClassName = (element: HTMLElement | null, classNames: string[]): boolean => {
+  if (element) {
+    const isRoot = element.classList.contains('root')
+    const isCorrect = classNames.some((className) => element.classList.contains(className))
+    if (isCorrect) return true
+    else if (isRoot) return false
+    else return findElementByClassName(element.parentElement, classNames)
+  }
+  return false
+}
+
 export const useDebounce = <T>(value: T, delay: number): T => {
   const [debouncedValue, setDebouncedValue] = useState<T>(value)
 

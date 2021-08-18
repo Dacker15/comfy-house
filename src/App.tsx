@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState, VFC } from 'react'
 import { ABOUT_ID, GALLERY_ID } from 'src/lib/constant'
 import { CartProduct, Product, ProductRaw } from 'src/lib/types'
-import { mapProducts } from 'src/lib/utils'
+import { findElementByClassName, mapProducts } from 'src/lib/utils'
 import About from 'src/components/about/About'
 import Appbar from 'src/components/appbar/Appbar'
 import Cart from './components/cart/Cart'
@@ -59,11 +59,29 @@ const App: VFC = () => {
   const scrollToAbout = useCallback(() => onScroll(ABOUT_ID), [onScroll])
   const scrollToGallery = useCallback(() => onScroll(GALLERY_ID), [onScroll])
 
+  const onClickAwayCart = useCallback(
+    (event: MouseEvent) => {
+      // @ts-ignore
+      const isCartClicked = findElementByClassName(event.target, ['cart', 'appbar-shop', 'appbar-shop-text'])
+      if (!isCartClicked && isCartOpen) {
+        setCartOpen(false)
+      }
+    },
+    [isCartOpen]
+  )
+
   useEffect(() => {
     fetch('products.json').then((response) => {
       response.json().then((data: { items: ProductRaw[] }) => setProducts(mapProducts(data.items)))
     })
   }, [])
+
+  useEffect(() => {
+    window.addEventListener('click', onClickAwayCart)
+    return () => {
+      window.removeEventListener('click', onClickAwayCart)
+    }
+  }, [onClickAwayCart])
 
   return (
     <div>

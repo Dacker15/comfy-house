@@ -20,6 +20,9 @@ module.exports = {
       animation: {
         'up-down': 'up-down 3s ease-in-out'
       },
+      maxWidth: {
+        '3xs': '12rem'
+      },
       height: {
         112: '32rem',
         120: '34rem',

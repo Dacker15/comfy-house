@@ -13,7 +13,7 @@
     }
   }
   &-shop {
-    @apply flex items-center gap-x-2;
+    @apply flex items-center gap-x-1 md:gap-x-2;
     &-text {
       &--hidden {
         @apply hidden md:inline;

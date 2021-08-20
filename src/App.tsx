@@ -34,7 +34,7 @@ const App: VFC = () => {
   const onRemove = useCallback((index: number) => {
     setCartProducts((prev) => {
       const next = [...prev]
-      if (next[index].count >= 1) next[index] = { ...next[index], count: next[index].count - 1 }
+      if (next[index].count > 1) next[index] = { ...next[index], count: next[index].count - 1 }
       else next.splice(index, 1)
       return next
     })
@@ -62,7 +62,12 @@ const App: VFC = () => {
   const onClickAwayCart = useCallback(
     (event: MouseEvent) => {
       // @ts-ignore
-      const isCartClicked = findElementByClassName(event.target, ['cart', 'appbar-shop', 'appbar-shop-text'])
+      const isCartClicked = findElementByClassName(event.target, [
+        'cart',
+        'cart-element',
+        'appbar-shop',
+        'appbar-shop-text'
+      ])
       if (!isCartClicked && isCartOpen) {
         setCartOpen(false)
       }

@@ -58,6 +58,9 @@ const App: VFC = () => {
   }, [])
   const scrollToAbout = useCallback(() => onScroll(ABOUT_ID), [onScroll])
   const scrollToGallery = useCallback(() => onScroll(GALLERY_ID), [onScroll])
+  const onScrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
 
   const onClickAwayCart = useCallback(
     (event: MouseEvent) => {
@@ -91,7 +94,7 @@ const App: VFC = () => {
 
   return (
     <div>
-      <Appbar cartPrice={price} cartItems={totalItems} onToggle={onToggle}>
+      <Appbar cartPrice={price} cartItems={totalItems} onToggle={onToggle} onScrollToTop={onScrollToTop}>
         <Cart
           products={cartProducts}
           price={price}

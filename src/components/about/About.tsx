@@ -1,13 +1,13 @@
 import React, { useRef, VFC } from 'react'
 import Button from 'src/base/Button'
 import { ABOUT_ID, INTRO_IMAGE_URL } from 'src/lib/constant'
-import { fromPublicFolder, useAnimation } from 'src/lib/utils'
+import { fromPublicFolder, useInViewAnimation } from 'src/lib/utils'
 import './styles.scss'
 
 type Props = { onScroll: () => void }
 const About: VFC<Props> = (props) => {
   const imageRef = useRef<HTMLImageElement | null>(null)
-  useAnimation(imageRef.current, 'about-screen-image--animated')
+  useInViewAnimation(imageRef.current, 'about-screen-image--animated')
 
   return (
     <div id={ABOUT_ID} className="about">

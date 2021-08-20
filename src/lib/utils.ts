@@ -15,13 +15,13 @@ export const mapProducts = (data: ProductRaw[]): Product[] => {
   }))
 }
 
-export const findElementByClassName = (element: HTMLElement | null, classNames: string[]): boolean => {
+export const findHierarchyElementByClassName = (element: HTMLElement | null, classNames: string[]): boolean => {
   if (element) {
     const isRoot = element.id === 'root'
     const isCorrect = classNames.some((className) => element.classList.contains(className))
     if (isCorrect) return true
     else if (isRoot) return false
-    else return findElementByClassName(element.parentElement, classNames)
+    else return findHierarchyElementByClassName(element.parentElement, classNames)
   }
   return false
 }
@@ -50,7 +50,7 @@ export const useDebounce = <T>(value: T, delay: number): T => {
   return debouncedValue
 }
 
-export const useAnimation = (element: HTMLElement | null, animationClass: string, once = true) => {
+export const useInViewAnimation = (element: HTMLElement | null, animationClass: string, once = true) => {
   const [done, setDone] = useState<boolean>(false)
   const canRepeat = useMemo(() => !once || !done, [once, done])
   const observer = useMemo(

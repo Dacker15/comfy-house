@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState, VFC } from 'react'
 import { ABOUT_ID, GALLERY_ID } from 'src/lib/constant'
 import { CartProduct, Product, ProductRaw } from 'src/lib/types'
-import { findElementByClassName, mapProducts } from 'src/lib/utils'
+import { findHierarchyElementByClassName, mapProducts } from 'src/lib/utils'
 import About from 'src/components/about'
 import Appbar from 'src/components/appbar'
 import Cart from './components/cart'
@@ -65,7 +65,7 @@ const App: VFC = () => {
   const onClickAwayCart = useCallback(
     (event: MouseEvent) => {
       // @ts-ignore
-      const isCartClicked = findElementByClassName(event.target, [
+      const isCartClicked = findHierarchyElementByClassName(event.target, [
         'cart',
         'cart-element',
         'appbar-shop',

@@ -17,7 +17,7 @@ export const mapProducts = (data: ProductRaw[]): Product[] => {
 
 export const findElementByClassName = (element: HTMLElement | null, classNames: string[]): boolean => {
   if (element) {
-    const isRoot = element.classList.contains('root')
+    const isRoot = element.id === 'root'
     const isCorrect = classNames.some((className) => element.classList.contains(className))
     if (isCorrect) return true
     else if (isRoot) return false

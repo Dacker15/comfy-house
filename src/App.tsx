@@ -66,7 +66,8 @@ const App: VFC = () => {
         'cart',
         'cart-element',
         'appbar-shop',
-        'appbar-shop-text'
+        'appbar-shop-text',
+        'gallery-element-cover-shop-button'
       ])
       if (!isCartClicked && isCartOpen) {
         setCartOpen(false)

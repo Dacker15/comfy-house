@@ -24,6 +24,4 @@ Builds the app for production to the `build` folder.
   |   |-- lib # Constants, utility functions, hooks and types
   |   |-- index.css # Style entry point
   |   |-- index.tsx # Application entry point
-  |-- test # Unit tests configurations (e.g.: mocks and setup)
-  |-- webpack # Webpack configurations
 ```

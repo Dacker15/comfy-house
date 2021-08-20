@@ -9,10 +9,10 @@
     &-explore {
       @apply flex flex-col gap-y-8 text-center items-center;
       &-title {
-        @apply text-5xl text-secondary border-text-white;
+        @apply text-5xl p-8 text-secondary border-text-white;
       }
       &-button {
-        @apply w-1/4;
+        @apply w-2/4 lg:w-1/4;
       }
     }
   }

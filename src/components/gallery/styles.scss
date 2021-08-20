@@ -4,7 +4,7 @@
     @apply text-center text-6xl;
   }
   &-input {
-    @apply w-3/4 p-1 border-2 rounded;
+    @apply w-full lg:w-3/4 p-1 border-2 rounded;
   }
   &-container {
     @apply grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6;

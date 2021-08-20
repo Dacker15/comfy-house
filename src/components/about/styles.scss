@@ -9,7 +9,7 @@
       @apply text-lg p-8;
     }
     &-button {
-      @apply w-1/4;
+      @apply w-2/4 lg:w-1/4;
     }
   }
   &-screen {

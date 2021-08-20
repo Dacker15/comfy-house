@@ -31,6 +31,9 @@ module.exports = {
       },
       backgroundSize: {
         full: '100% 100%'
+      },
+      scale: {
+        120: '1.2'
       }
     },
     colors: {

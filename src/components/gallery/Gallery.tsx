@@ -2,7 +2,7 @@ import React, { useEffect, useState, VFC } from 'react'
 import { DEBOUNCE_TIME, GALLERY_ID } from 'src/lib/constant'
 import { Product } from 'src/lib/types'
 import { useDebounce } from 'src/lib/utils'
-import Card from 'src/components/card/Card'
+import GalleryElement from './GalleryElement'
 import './styles.scss'
 
 type Props = { products: Product[]; onAdd: (nextProduct: Product) => void }
@@ -27,7 +27,7 @@ const Gallery: VFC<Props> = (props) => {
       />
       <div className="gallery-container">
         {actualProducts.map((p, i) => (
-          <Card model={p} onAdd={props.onAdd} key={i} />
+          <GalleryElement model={p} onAdd={props.onAdd} key={i} />
         ))}
       </div>
     </div>

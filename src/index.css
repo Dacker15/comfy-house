@@ -4,14 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Old Standard TT';
+  src: url("src/assets/OldStandardTT-Regular.ttf");
+}
+@font-face {
+  font-family: 'Old Standard TT';
+  src: url("src/assets/OldStandardTT-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Old Standard TT';
+  src: url("src/assets/OldStandardTT-Italic.ttf");
+  font-style: italic;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+body {
+  margin: 0;
+  font-family: 'Old Standard TT', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

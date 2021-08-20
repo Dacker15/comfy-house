@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useMemo, useState, VFC } from 'react'
 import { ABOUT_ID, GALLERY_ID } from 'src/lib/constant'
 import { CartProduct, Product, ProductRaw } from 'src/lib/types'
 import { findElementByClassName, mapProducts } from 'src/lib/utils'
-import About from 'src/components/about/About'
-import Appbar from 'src/components/appbar/Appbar'
-import Cart from './components/cart/Cart'
-import Gallery from 'src/components/gallery/Gallery'
-import Splash from 'src/components/splash/Splash'
+import About from 'src/components/about'
+import Appbar from 'src/components/appbar'
+import Cart from './components/cart'
+import Gallery from 'src/components/gallery'
+import Splash from 'src/components/splash'
 
 const App: VFC = () => {
   const [products, setProducts] = useState<Product[]>([])
